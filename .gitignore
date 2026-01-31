@@ -1,0 +1,32 @@
+## Erzeugte Build-Ordner
+bin/
+obj/
+
+## Rider / IntelliJ spezifisch
+.idea/
+*.sln.iml
+*.user
+*.customer
+*.docset
+
+## Visual Studio spezifisch
+.vs/
+[Dd]ebug/
+[Rr]elease/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## NuGet Pakete
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Betriebssystem-spezifisch
+.DS_Store
+Thumbs.db
+
+## Mono / Linux spezifisch
+*.pidb
+*.resources
