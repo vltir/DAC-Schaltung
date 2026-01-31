@@ -39,6 +39,12 @@ namespace DAC_Schaltung
             BerechneDac();
         }
         
+        // Falls du die Checkboxen im Designer an dieses Event gebunden hast:
+        private void CheckBox_CheckStateChanged(object sender, EventArgs e)
+        {
+            BerechneDac();
+        }
+        
         // Diese Methode berechnet alles neu
         private void BerechneDac()
         {
@@ -58,8 +64,13 @@ namespace DAC_Schaltung
             // 2. Referenzstrom berechnen
             // Einheiten: V / kOhm = mA
             double iRef = uRef / rRef;
+            
+            // Ausgabe der Stromstärke (Formatierung laut Beispiel U.4 auf Seite U8)
+            // Falls du noch kein Label dafür hast, kannst du es auch in label2 mit anzeigen
+            string stromAnzeige = "IRef = " + iRef.ToString("F2") + " mA";
 
-            // 3. Widerstände der Stufen berechnen und in Labels anzeigen
+            // 3. Widerstände der Stufen berechnen und anzeigen
+            // R1=2*R0, R2=4*R0, R3=8*R0, R4=16*R0
             double r1 = 2 * r0;
             double r2 = 4 * r0;
             double r3 = 8 * r0;
@@ -82,8 +93,9 @@ namespace DAC_Schaltung
             // 5. Ausgangsspannung uA berechnen
             double uA = rGesamt * iRef;
 
-            // 6. Ausgabe im Label mit 3 Nachkommastellen
-            label2.Text = "uA = " + uA.ToString("F3") + " V";
+            // 6. Finale Werteausgabe im großen Label
+            // Anzeige von IRef und uA kombiniert (entspricht Screenshots auf U8)
+            label2.Text = stromAnzeige + "\n" + "uA = " + uA.ToString("F3") + " V";
         }
     }
 
